@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LiveLong AI – Healthcare Decision Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">⚕</span>
+      <div>
+        <span class="logo-text">LiveLong <em>AI</em></span>
+        <span class="logo-tagline">Healthcare Decision Intelligence Platform</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#navigator">Navigator</a>
+      <a href="#results">Results</a>
+      <a href="#chatbot">Chat</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="tel:108" class="emergency-badge">🚨 Emergency: <strong>108</strong></a>
+  </div>
+</header>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🇮🇳 AI-powered real-time healthcare decision system for India</div>
+    <h1 class="hero-title">Smarter Healthcare Decisions,<br/><em>Right When You Need Them.</em></h1>
+    <p class="hero-sub">Describe your symptoms once. Get a complete care pathway — condition match, cost breakdown, ranked hospitals, and a human-like recommendation — instantly.</p>
+    <div class="hero-pills">
+      <span>🚨 Emergency detection</span>
+      <span>💸 Itemised cost breakdown</span>
+      <span>🏥 Top-3 ranked hospitals</span>
+      <span>📋 Explained decisions</span>
+      <span>🔀 Smart alternatives</span>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Conditions covered</div></div>
+    <div class="stat"><div class="stat-num">10</div><div class="stat-label">Indian cities</div></div>
+    <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Hospitals in database</div></div>
+    <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Always</div></div>
+  </div>
+</section>
+
+<!-- ═══ NAVIGATOR FORM ════════════════════════════════════════════════════ -->
+<section class="section" id="navigator">
+  <div class="container">
+    <div class="section-label">Step 1 — Patient Input</div>
+    <h2 class="section-title">Describe Your Situation</h2>
+    <p class="section-sub">Type symptoms naturally — e.g., "fever and headache for 2 days with body ache"</p>
+
+    <div class="form-card">
+      <div class="form-group">
+        <label for="symptoms">🩺 Symptoms <span class="req">*</span></label>
+        <textarea id="symptoms" rows="3"
+          placeholder="e.g., high fever, severe headache, chest pain, breathlessness, vomiting…"></textarea>
+        <div class="form-hint">More detail = higher confidence score and better recommendation</div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">📍 Your City <span class="req">*</span></label>
+          <select id="city">
+            <option value="">— Select City —</option>
+            <option value="ahmedabad">Ahmedabad</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="chennai">Chennai</option>
+            <option value="delhi">Delhi</option>
+            <option value="hyderabad">Hyderabad</option>
+            <option value="kolkata">Kolkata</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="nellore">Nellore</option>
+            <option value="pune">Pune</option>
+            <option value="vizag">Visakhapatnam (Vizag)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget">💰 Available Budget (₹) <span class="req">*</span></label>
+          <input type="number" id="budget" min="0" step="100" placeholder="e.g., 2000"/>
+          <div class="form-hint">Amount you can currently spend on treatment</div>
+        </div>
+      </div>
+
+      <div class="chip-section">
+        <div class="chip-label">Quick-add common symptoms:</div>
+        <div class="chips">
+          <button class="chip" data-sym="fever">🌡 Fever</button>
+          <button class="chip" data-sym="headache">🤕 Headache</button>
+          <button class="chip" data-sym="cough">😮‍💨 Cough</button>
+          <button class="chip" data-sym="vomiting">🤢 Vomiting</button>
+          <button class="chip" data-sym="chest pain">💔 Chest Pain</button>
+          <button class="chip" data-sym="diarrhea">🏥 Diarrhea</button>
+          <button class="chip" data-sym="breathlessness">😤 Breathlessness</button>
+          <button class="chip" data-sym="skin rash">🔴 Skin Rash</button>
+          <button class="chip" data-sym="joint pain">🦴 Joint Pain</button>
+          <button class="chip" data-sym="dizziness">😵 Dizziness</button>
+          <button class="chip" data-sym="body ache">💪 Body Ache</button>
+          <button class="chip" data-sym="sore throat">🗣 Sore Throat</button>
+        </div>
+      </div>
+
+      <button class="btn-analyse" id="analyseBtn" onclick="analyseSymptoms()">
+        <span class="btn-icon">🔍</span> Get Smart Recommendation
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESULTS ════════════════════════════════════════════════════════════ -->
+<section class="section results-section" id="results" style="display:none;">
+  <div class="container">
+    <div class="section-label">Step 2 — Decision Intelligence Report</div>
+    <h2 class="section-title">Your Personalised Health Recommendation</h2>
+
+    <!-- EMERGENCY ALERT -->
+    <div class="emergency-alert" id="emergencyAlert" style="display:none;">
+      <div class="emg-icon">🚨</div>
+      <div class="emg-body">
+        <div class="emg-title">EMERGENCY SITUATION DETECTED</div>
+        <div class="emg-text" id="emergencyText"></div>
+        <a href="tel:108" class="emg-call-btn">📞 Call 108 — Free Ambulance</a>
+      </div>
+    </div>
+
+    <!-- SEVERITY + CONDITION MATCH BANNER -->
+    <div class="severity-banner" id="severityBanner">
+      <div class="sev-left">
+        <div class="sev-icon" id="sevIcon"></div>
+        <div>
+          <div class="sev-label">Severity Assessment</div>
+          <div class="sev-value" id="sevValue"></div>
+          <div class="sev-note" id="sevNote"></div>
+        </div>
+      </div>
+      <div class="sev-right">
+        <div class="condition-match-box" id="conditionMatchBox">
+          <div class="cmb-label">Your symptoms suggest:</div>
+          <div class="cmb-name" id="cmbName"></div>
+          <div class="cmb-conf" id="cmbConf"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DECISION RESULT -->
+    <div class="result-card decision-card">
+      <div class="decision-header">
+        <h3>📋 Decision Result</h3>
+        <div class="rec-badge" id="recBadge"></div>
+      </div>
+      <div class="recommendation-text" id="recText"></div>
+
+      <!-- Human Advice Line -->
+      <div class="human-advice-box" id="humanAdviceBox">
+        <div class="hab-icon">💬</div>
+        <div class="hab-text" id="humanAdviceText"></div>
+      </div>
+
+      <!-- Explanation -->
+      <div class="explanation-box">
+        <div class="exp-label">💡 Why this recommendation?</div>
+        <div class="exp-text" id="explanationText"></div>
+      </div>
+
+      <!-- Risk Insight -->
+      <div class="risk-insight-box" id="riskInsightBox">
+        <div class="rib-text" id="riskInsightText"></div>
+      </div>
+
+      <!-- Uncertainty notice -->
+      <div class="uncertainty-notice">
+        📊 This recommendation is based on available data and may vary in real-world scenarios.
+        Always verify with a qualified healthcare professional.
+      </div>
+    </div>
+
+    <!-- COST BREAKDOWN -->
+    <div class="result-card cost-breakdown-card">
+      <h3>💸 Cost Breakdown</h3>
+      <div id="costBreakdownContent"></div>
+    </div>
+
+    <!-- COST COMPARISON TABLE -->
+    <div class="result-card">
+      <h3>⚖️ Govt vs Private Comparison</h3>
+      <div id="costCompTable"></div>
+      <div class="budget-note" id="budgetNote"></div>
+    </div>
+
+    <!-- HOSPITAL LIST -->
+    <div class="result-card">
+      <h3>🏥 Top Recommended Hospitals Near You</h3>
+      <p class="hospital-intro" id="hospitalIntro"></p>
+      <div id="hospitalsList" class="hospitals-grid"></div>
+      <div id="noHospitals" style="display:none;color:var(--text-sub);font-size:.9rem;padding:.5rem 0;">
+        No hospitals found in our database for this city. Search Google Maps for the nearest hospital.
+      </div>
+    </div>
+
+    <!-- ALTERNATIVES -->
+    <div class="result-card" id="altCard" style="display:none;">
+      <h3>🔀 Alternative Care Options</h3>
+      <p class="alt-intro" id="altIntro"></p>
+      <div class="alternatives-grid" id="alternativesGrid"></div>
+    </div>
+
+    <!-- MATCHED SYMPTOMS -->
+    <div class="result-card">
+      <h3>🔎 Symptoms Identified</h3>
+      <div id="matchedSymptoms" class="symptom-tags"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CHATBOT ════════════════════════════════════════════════════════════ -->
+<section class="section chatbot-section" id="chatbot">
+  <div class="container">
+    <div class="section-label">Step 3 — AI Assistant</div>
+    <h2 class="section-title">Ask LiveLong AI</h2>
+    <p class="section-sub">Context-aware responses based on your analysis. Ask about costs, alternatives, risks, or any health question.</p>
+
+    <div class="chat-widget">
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg bot-msg">
+          <div class="bot-avatar">⚕</div>
+          <div class="msg-bubble">
+            Hello! 👋 I'm LiveLong AI — your healthcare decision guide.<br/>
+            Run the analysis above, then ask me anything:<br/>
+            <em>"explain my result"</em> · <em>"what are my alternatives?"</em> · <em>"how much does private care cost?"</em> · <em>"what if symptoms worsen?"</em>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput"
+          placeholder="Ask anything… e.g. 'why govt hospital?' or 'explain my result'"
+          onkeydown="if(event.key==='Enter') sendChat()"/>
+        <button class="chat-send-btn" onclick="sendChat()">Send ↗</button>
+      </div>
+      <div class="quick-qs">
+        <span class="quick-label">Quick:</span>
+        <button class="qbtn" onclick="quickChat('explain my result')">Explain result</button>
+        <button class="qbtn" onclick="quickChat('what are my alternatives?')">Alternatives</button>
+        <button class="qbtn" onclick="quickChat('how much does private hospital cost?')">Private cost</button>
+        <button class="qbtn" onclick="quickChat('what are the risks if I wait?')">Risk if I wait</button>
+        <button class="qbtn" onclick="quickChat('what is Ayushman Bharat?')">Ayushman Bharat</button>
+        <button class="qbtn" onclick="quickChat('emergency number India')">Emergency help</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DISCLAIMER ════════════════════════════════════════════════════════ -->
+<div class="disclaimer-bar">
+  ⚠️ This system provides <strong>decision support only</strong> and is not a medical diagnosis or prescription tool.
+  Always consult a qualified healthcare professional for medical advice.
+  In emergencies, call <strong>108</strong>.
+</div>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">⚕ LiveLong AI</div>
+    <div class="footer-note">
+      AI-powered real-time healthcare decision system for India 🇮🇳<br/>
+      Built for hackathons · Final Year Projects · Real-world healthcare navigation
+    </div>
+    <div class="footer-links">
+      <a href="/about">About</a> · <a href="#navigator">Navigator</a> · <a href="tel:108">Emergency: 108</a>
+    </div>
+    <div class="footer-copy">© 2024 LiveLong AI · Decision support only, not medical advice</div>
+  </div>
+</footer>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay" style="display:none;">
+  <div class="loader-card">
+    <div class="loader-pulse">⚕</div>
+    <div class="loader-text">Analysing your situation…</div>
+    <div class="loader-steps">
+      <span id="ls1" class="lstep active">Matching symptoms</span>
+      <span class="ls-arrow">→</span>
+      <span id="ls2" class="lstep">Assessing severity</span>
+      <span class="ls-arrow">→</span>
+      <span id="ls3" class="lstep">Comparing costs</span>
+      <span class="ls-arrow">→</span>
+      <span id="ls4" class="lstep">Ranking hospitals</span>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

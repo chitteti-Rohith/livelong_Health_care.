@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About – LiveLong AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <a href="/" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:.75rem;">
+        <span class="logo-icon">⚕</span>
+        <div>
+          <span class="logo-text">LiveLong <em>AI</em></span>
+          <span class="logo-tagline">Healthcare Decision Intelligence Platform</span>
+        </div>
+      </a>
+    </div>
+    <nav class="nav"><a href="/">Home</a><a href="/about" class="active">About</a></nav>
+    <a href="tel:108" class="emergency-badge">🚨 Emergency: <strong>108</strong></a>
+  </div>
+</header>
+
+<section class="hero" style="min-height:38vh;">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Final Year Project · Hackathon · Real-world Product</div>
+    <h1 class="hero-title">About <em>LiveLong AI</em></h1>
+    <p class="hero-sub">AI-powered real-time healthcare decision system for India — built to be useful, explainable, and accessible.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:800px;">
+
+    <div class="result-card decision-card" style="margin-bottom:1.5rem;">
+      <h3>🎯 Problem Statement</h3>
+      <p style="line-height:1.8;margin-top:.5rem;">Millions of people in India struggle to make basic healthcare decisions — whether to go to a government or private hospital, how much it will cost, and whether their condition is urgent. LiveLong AI solves this by providing an intelligent, explainable, budget-aware care recommendation system in real time.</p>
+    </div>
+
+    <div class="result-card" style="margin-bottom:1.5rem;">
+      <h3>⚙️ Decision Intelligence Pipeline</h3>
+      <div class="about-steps" style="margin-top:.75rem;">
+        <div class="about-step"><span class="step-num">1</span><div><strong>Symptom Input</strong> — User describes symptoms in plain English or uses quick-add chips</div></div>
+        <div class="about-step"><span class="step-num">2</span><div><strong>Keyword Matching</strong> — 24 symptom patterns matched against a structured database</div></div>
+        <div class="about-step"><span class="step-num">3</span><div><strong>Emergency Detection</strong> — 20+ critical keywords trigger instant emergency override</div></div>
+        <div class="about-step"><span class="step-num">4</span><div><strong>Condition Inference</strong> — Symptom cluster matched to 15 known medical conditions</div></div>
+        <div class="about-step"><span class="step-num">5</span><div><strong>Confidence Scoring</strong> — Match strength, data coverage, and specificity combined into a 0–1 score</div></div>
+        <div class="about-step"><span class="step-num">6</span><div><strong>Budget Analysis</strong> — Govt vs Private cost compared to user's budget; shortfall calculated</div></div>
+        <div class="about-step"><span class="step-num">7</span><div><strong>Hospital Ranking</strong> — Top 3 hospitals scored on type match, rating, budget fit, and proximity</div></div>
+        <div class="about-step"><span class="step-num">8</span><div><strong>Explanation + Advice</strong> — Conversational explanation + human-like advice + risk insight generated</div></div>
+      </div>
+    </div>
+
+    <div class="result-card" style="margin-bottom:1.5rem;">
+      <h3>🛠️ Tech Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-item"><div class="tech-icon">🐍</div><div><strong>Python + Flask</strong><br/><small>Backend framework — lightweight and modular</small></div></div>
+        <div class="tech-item"><div class="tech-icon">🗄️</div><div><strong>SQLite → MySQL</strong><br/><small>Database (scalable to MySQL with one file change)</small></div></div>
+        <div class="tech-item"><div class="tech-icon">🎨</div><div><strong>HTML + CSS + JS</strong><br/><small>Frontend — no framework, fully custom design</small></div></div>
+        <div class="tech-item"><div class="tech-icon">🧠</div><div><strong>Rule-based AI Engine</strong><br/><small>Decision intelligence without ML complexity</small></div></div>
+      </div>
+    </div>
+
+    <div class="result-card" style="margin-bottom:1.5rem;border-left:4px solid var(--teal);">
+      <h3>🤖 Responsible AI Principles</h3>
+      <ul style="margin-top:.5rem;padding-left:1.2rem;line-height:2;">
+        <li>Uses <strong>suggestion / recommendation</strong> language — never "diagnosis" or "prescription"</li>
+        <li>Always includes an <strong>explanation</strong> of why a decision was made</li>
+        <li>Displays <strong>confidence scores</strong> so users understand certainty levels</li>
+        <li>Shows <strong>uncertainty notice</strong> on every result</li>
+        <li>Mandatory <strong>disclaimer bar</strong> visible on all pages</li>
+        <li>Emergency situations always routed to <strong>professional care</strong>, never self-treatment</li>
+      </ul>
+    </div>
+
+    <div class="result-card" style="margin-bottom:1.5rem;background:var(--red-pale);border-color:#fca5a5;">
+      <h3>⚠️ Disclaimer</h3>
+      <p style="line-height:1.8;margin-top:.5rem;color:#991b1b;">
+        LiveLong AI provides <strong>decision support only</strong>. It is not a medical diagnosis tool and does not replace professional medical advice, consultation, or treatment. Always consult a qualified healthcare professional for medical decisions. In emergencies, call <strong>108</strong> immediately.
+      </p>
+    </div>
+
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="/" class="btn-analyse" style="display:inline-flex;text-decoration:none;width:auto;padding:1rem 2.5rem;">← Back to Decision Navigator</a>
+    </div>
+  </div>
+</section>
+
+<div class="disclaimer-bar">⚠️ This system provides <strong>decision support only</strong> and is not a medical diagnosis or prescription tool. Always consult a qualified healthcare professional.</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">⚕ LiveLong AI</div>
+    <div class="footer-note">AI-powered real-time healthcare decision system for India 🇮🇳</div>
+    <div class="footer-copy">© 2024 LiveLong AI · Decision support only, not medical advice</div>
+  </div>
+</footer>
+</body>
+</html>
