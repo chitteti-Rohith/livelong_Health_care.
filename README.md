@@ -140,19 +140,6 @@ The chatbot is **rule-based** (no ML/LLM required):
 - [ ] Hindi language support
 - [ ] Mobile app (Flutter/React Native) using the same Flask API
 
----
 
-## ⚠️ Disclaimer
+**Tech Stack:** Python · Flask · SQLite · HTML · CSS · JavaScript 
 
-This tool is for **guidance only**. It does NOT replace professional medical advice.
-Always consult a qualified doctor. **In emergencies, call 108.**
-
----
-
-## 🏆 Built For
-
-- Final Year B.Tech Project
-- Hackathon Submission  
-- Resume Portfolio
-
-**Tech Stack:** Python · Flask · SQLite · HTML · CSS · JavaScript (Vanilla)
