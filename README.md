@@ -1,4 +1,4 @@
-# LiveLine AI – Healthcare Navigator & Cost Estimation System
+# LiveLong AI – Healthcare Navigator & Cost Estimation System
 
 > *India's smart, budget-aware healthcare navigator*
 
