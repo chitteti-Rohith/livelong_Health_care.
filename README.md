@@ -1,6 +1,6 @@
-# ⚕ LifeLine AI – Healthcare Navigator & Cost Estimation System
+# LiveLine AI – Healthcare Navigator & Cost Estimation System
 
-> *India's smart, budget-aware healthcare navigator. Built for a hackathon and final year project.*
+> *India's smart, budget-aware healthcare navigator*
 
 ---
 
